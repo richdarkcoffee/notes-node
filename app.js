@@ -9,6 +9,11 @@ const notes = require('./notes.js');
 var res = notes.addNote();
 console.log(res);
 
+var addnumbers = notes.add(3,4);
+console.log(addnumbers);
+
+console.log('Result: ', notes.add(6,-10));
+
 // You need to provide a callback function to handle an error if the
 // application is unable to write to the file. Possible write problems
 // include file not created or file/directory permissions
