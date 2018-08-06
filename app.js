@@ -9,9 +9,11 @@ const notes = require('./notes.js');
 var res = notes.addNote();
 console.log(res);
 
+// How I call notes.add
 var addnumbers = notes.add(3,4);
 console.log(addnumbers);
 
+// How the instructor called notes.add
 console.log('Result: ', notes.add(6,-10));
 
 // You need to provide a callback function to handle an error if the
