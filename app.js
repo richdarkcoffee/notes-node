@@ -9,7 +9,7 @@ var user = os.userInfo();
 // You need to provide a callback function to handle an error if the
 // application is unable to write to the file. Possible write problems
 // include file not created or file/directory permissions
-fs.appendFile('greetings.txt',`Hello ${user.username}!`, function (err) {
+fs.appendFile('greetings.txt',`Hello ${user.username}! You are ${notes.age}.`, function (err) {
   if (err) {
     console.log('Unable to write to file');
   }
