@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/richdarkcoffee/notes-node/issues"
   },
-  "homepage": "https://github.com/richdarkcoffee/notes-node#readme"
+  "homepage": "https://github.com/richdarkcoffee/notes-node#readme",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
 }
