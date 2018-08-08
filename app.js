@@ -11,7 +11,7 @@ console.log(_.isString(true));
 console.log(_.isString('Richard'));
 
 // Removes duplicates from an array
-var filteredarray = _.uniq(['Richard',1,'Richard',1,2,3,4]);
+var filteredarray = _.uniq(['Mike',1,'Richard',1,2,3,4]);
 console.log(filteredarray);
 
 // var user = os.userInfo();
