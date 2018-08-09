@@ -18,9 +18,9 @@ if(command === 'add') {
 // We removed the console.log and called a function in notes called addNote
     notes.addNote(argv.title,argv.body);
 } else if (command === 'list') {
-    notes.listNotes();
+    notes.getAll();
 } else if (command === 'read') {
-    notes.readNote(argv.title);
+    notes.getNote(argv.title);
 } else if (command === 'remove') {
     notes.removeNote(argv.title);
 }

@@ -4,12 +4,12 @@ var addNote = (title, body) => {
     console.log('Adding note...\nTitle: ',title, '\nBody: ', body);
 }
 
-var listNotes = () => {
+var getAll = () => {
     console.log('Here is a list of all of the notes.');
 }
 
 // Notice how to capture an exception when title is undefined
-var readNote = (title) => {
+var getNote = (title) => {
     if (title===undefined) {
         console.log('No title specified!')
     } else {
@@ -29,8 +29,8 @@ var removeNote = (title) => {
 // Notice how the module.exports statement changed here 
 module.exports = {
     addNote,
-    listNotes,
-    readNote,
+    getAll,
+    getNote,
     removeNote
 };
 
