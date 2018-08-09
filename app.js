@@ -19,7 +19,7 @@ if(command === 'add') {
 // We removed the console.log and called a function in notes called addNote
     notes.addNote(argv.title,argv.body);
 } else if (command === 'list') {
-    console.log('Listing notes.');
+    notes.listNotes(argv.title);
 } else if (command === 'read') {
     console.log('Reading note.');
 } else if (command === 'remove') {
