@@ -8,10 +8,10 @@ const notes = require('./notes.js');
 var command = process.argv[2];
 
 // Here we did three tests of additional arguements:
-node app.js remove --title=secrets
-node app.js remove --title secrets
-node app.js remove --title="secrets"
-node app.js remove --title "secrets"
+// node app.js remove --title=secrets
+// node app.js remove --title secrets
+// node app.js remove --title="secrets"
+// node app.js remove --title "secrets"
 // Return values respectively:
 // [ '/usr/local/Cellar/node/10.8.0/bin/node',
 //   '/Users/richardc/Code/NodeJS-Training/notes-node/app.js',
@@ -20,7 +20,8 @@ node app.js remove --title "secrets"
 // [ '/usr/local/Cellar/node/10.8.0/bin/node',
 //   '/Users/richardc/Code/NodeJS-Training/notes-node/app.js',
 //   'remove',
-//   '--title=secrets' ]
+//   '--title',
+//   'secrets' ]
 //   [ '/usr/local/Cellar/node/10.8.0/bin/node',
 //   '/Users/richardc/Code/NodeJS-Training/notes-node/app.js',
 //   'remove',
@@ -30,7 +31,7 @@ node app.js remove --title "secrets"
 //   'remove',
 //   '--title',
 //   'secrets' ]
-
+//  Notice how quotes around the arguement are removed 
 
 console.log(process.argv);
 
