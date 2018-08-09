@@ -1,6 +1,12 @@
 console.log('Starting notes.js');
 
-module.exports.addNote = () => {
-    console.log('addNote');
-    return 'New Note'
+var addNote = (title, body) => {
+    console.log('Adding note...\nTitle: ',title, '\nBody: ', body);
+}
+
+// Notice how the module.exports statement changed here 
+module.exports = {
+    addNote
 };
+
+
