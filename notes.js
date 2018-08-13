@@ -1,7 +1,25 @@
 console.log('Starting notes.js');
 
+const fs = require('fs');
+
 var addNote = (title, body) => {
     console.log('Adding note...\nTitle: ',title, '\nBody: ', body);
+    // created an array and an object
+    var notes = [];
+    var note = {
+        title,
+        body
+    }
+    // Added try-catch to catch if file does not exist. If it doesn't,
+    // the function just moves on and reads the file in
+    try {
+        var notesString = fs.readFileSync('notes-data.json');
+        notes = JSON.parse(notesString);
+    } catch (e) {
+
+    }
+    notes.push(note); // Pushes the note passed into addNote into the array of objects
+    fs.writeFileSync('notes-data.json', JSON.stringify(notes));
 }
 
 var getAll = () => {
