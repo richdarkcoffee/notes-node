@@ -18,8 +18,18 @@ var addNote = (title, body) => {
     } catch (e) {
 
     }
-    notes.push(note); // Pushes the note passed into addNote into the array of objects
-    fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+
+    var duplicateNotes = notes.filter((note) => note.title === title);
+    //  is the same as the following...
+    // var duplicateNotes = notes.filter((note) => {
+    //     return note.title === title;
+    // })
+    if (duplicateNotes.length === 0) {
+        notes.push(note); // Pushes the note passed into addNote into the array of objects
+        fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+    } else {
+        console.log(`${title} already exists. Note not added!`);
+    }
 }
 
 var getAll = () => {
