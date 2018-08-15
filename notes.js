@@ -2,23 +2,31 @@ console.log('Starting notes.js');
 
 const fs = require('fs');
 
-var addNote = (title, body) => {
-    console.log('Adding note...\nTitle: ',title, '\nBody: ', body);
-    // created an array and an object
-    var notes = [];
-    var note = {
-        title,
-        body
-    }
+var fetchNotes = () => {
     // Added try-catch to catch if file does not exist. If it doesn't,
     // the function just moves on and reads the file in
     try {
         var notesString = fs.readFileSync('notes-data.json');
-        notes = JSON.parse(notesString);
+        return JSON.parse(notesString);
     } catch (e) {
-
+        return [];
     }
+}
 
+var saveNotes = (notes) => {
+    fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+}
+
+
+var addNote = (title, body) => {
+    // console.log('Adding note...\nTitle: ',title, '\nBody: ', body);
+    // created an array and an object
+    var notes = fetchNotes();
+    var note = {
+        title,
+        body
+    };
+    
     var duplicateNotes = notes.filter((note) => note.title === title);
     //  is the same as the following...
     // var duplicateNotes = notes.filter((note) => {
@@ -26,14 +34,22 @@ var addNote = (title, body) => {
     // })
     if (duplicateNotes.length === 0) {
         notes.push(note); // Pushes the note passed into addNote into the array of objects
-        fs.writeFileSync('notes-data.json', JSON.stringify(notes));
-    } else {
-        console.log(`${title} already exists. Note not added!`);
-    }
+        saveNotes(notes);
+        return note;
+    } 
+    // else {
+    //     console.log(`${title} already exists. Note not added!`);
+    // }
 }
 
 var getAll = () => {
+    var notes = fetchNotes();
+
     console.log('Here is a list of all of the notes.');
+    
+    notes.forEach(element => {
+        console.log(`\n---\n${element.title}\n---\n${element.body}`)
+    });    
 }
 
 // Notice how to capture an exception when title is undefined
@@ -47,10 +63,18 @@ var getNote = (title) => {
 
 // Notice how to capture an exception when title is undefined
 var removeNote = (title) => {
-    if (title===undefined) {
-        console.log('No title specified!')
+    // fetch notes
+    var notes = fetchNotes();
+    // filter notes
+    var filteredNotes = notes.filter((note) => note.title !== title);
+    // removing note with title of arguement
+    if (notes === filteredNotes) {
+    // He did this better
+    // if (notes.length === filteredNotes.length) {
+        return undefined;
     } else {
-        console.log(`Are you sure you want to remove note titled: "${title}"?`);
+        saveNotes(filteredNotes);
+        return title;
     }
 }
 
