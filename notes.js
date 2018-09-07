@@ -54,11 +54,15 @@ var getAll = () => {
 
 // Notice how to capture an exception when title is undefined
 var getNote = (title) => {
-    if (title===undefined) {
-        console.log('No title specified!')
-    } else {
-        console.log(`Here is the note titled: "${title}"`);
-    }
+    var notes = fetchNotes();
+    var filteredNotes = notes.filter((note) => note.title === title);
+    console.log(filteredNotes[0]);
+    return filteredNotes[0];
+    // if (title===undefined) {
+    //     console.log('No title specified!')
+    // } else {
+    //     console.log(`Here is the note titled: "${title}"`);
+    // }
 }
 
 // Notice how to capture an exception when title is undefined

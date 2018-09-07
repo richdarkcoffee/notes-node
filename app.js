@@ -29,7 +29,10 @@ if(command === 'add') {
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
-    notes.getNote(argv.title);
+    var note = notes.getNote(argv.title);
+    console.log(note);
+    var message = note ? `Here's your note:\n---\n${note.title}\n---\n${note.body}` : `A note with the title "${argv.title}" does not exist.`;
+    console.log(message);
 } else if (command === 'remove') {
     var title = notes.removeNote(argv.title);
     // if (title === undefined){
