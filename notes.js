@@ -68,14 +68,17 @@ var removeNote = (title) => {
     // filter notes
     var filteredNotes = notes.filter((note) => note.title !== title);
     // removing note with title of arguement
-    if (notes === filteredNotes) {
+    // if (notes === filteredNotes) {
+    //     return undefined;
+    // } else {
+    //     saveNotes(filteredNotes);
+    //     return title;
+    // }
     // He did this better
     // if (notes.length === filteredNotes.length) {
-        return undefined;
-    } else {
-        saveNotes(filteredNotes);
-        return title;
-    }
+    saveNotes(filteredNotes);
+
+    return notes.length !== filteredNotes.length;
 }
 
 // Notice how the module.exports statement changed here 
