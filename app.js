@@ -24,23 +24,21 @@ if(command === 'add') {
     if (note === undefined){
         console.log(`A note with the title "${argv.title}" already exists.`);
     } else {
-        console.log(`Note titled "${note.title}" has been added.`)
+        console.log(`The following note has been added:`);
+        notes.logNote(note);        
     }
 } else if (command === 'list') {
     notes.getAll();
 } else if (command === 'read') {
     var note = notes.getNote(argv.title);
-    console.log(note);
-    var message = note ? `Here's your note:\n---\n${note.title}\n---\n${note.body}` : `A note with the title "${argv.title}" does not exist.`;
-    console.log(message);
+    if (note === undefined){
+        console.log(`A note with the title "${argv.title}" does not exist.`);
+    } else {
+        console.log(`The note you requested to read:`);
+        notes.logNote(note);
+    }
 } else if (command === 'remove') {
     var title = notes.removeNote(argv.title);
-    // if (title === undefined){
-    //     console.log(`A note with the title: "${title}" does not exist.`);
-    // } else {
-    //     console.log(`Note titled ${title} has been removed.`)
-    // }
-    // The instructor goes for a shorter version of a conditional statement:
     var message = title ? `Note titled "${argv.title}" has been removed.` : `A note with the title "${argv.title}" does not exist.` ;
     console.log(message);
 }
