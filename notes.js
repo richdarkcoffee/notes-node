@@ -33,10 +33,7 @@ var addNote = (title, body) => {
 
 var getAll = () => {
     var notes = fetchNotes();
-    console.log('Here is a list of all of the notes.');
-    notes.forEach(element => {
-        logNote(element);
-    });    
+    return(notes);
 }
 
 var getNote = (title) => {
