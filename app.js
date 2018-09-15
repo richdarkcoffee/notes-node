@@ -42,19 +42,14 @@ const notes = require('./notes.js');
 
 var argv = yargs.argv;
 
-    var command = process.argv[2];
+var command = process.argv[2];
 // Here we're using process.argv to return the first item passed from the command line
 // console.log('Command from process:', command);
 // Alternatively, we can use yargs to get the same information
-command = argv._[0];
+// command = argv._[0];
 
-// Here we're displaying both the command and yargs information
-// console.log('Command from yargs:', command);
-// console.log('Yargs:', argv);
+console.log(command);
 
-console.log(argv._);
-console.log(argv.list);
-console.log(argv.add);
 if(command === 'add') {
 // We removed the console.log and called a function in notes called addNote
     var note = notes.addNote(argv.title,argv.body);

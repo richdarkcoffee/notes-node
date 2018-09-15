@@ -56,6 +56,11 @@ var removeNote = (title) => {
 }
 
 var logNote = (note) => {
+    // Learned about chrome://inspect in Chrome
+    // Ran node --inspect-brk on application
+    // Set debug breakpoint below
+    // and used Chrome debugger to print note
+    debugger;
     console.log(`---\n${note.title}\n---\n${note.body}`);
 }
 
