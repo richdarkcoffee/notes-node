@@ -1,27 +1,37 @@
 const fs = require('fs');
 const _ = require('lodash');
-const yargs = require('yargs')
-    .command('add', 'Add a note.')
+const yargs = require('yargs');
+const notes = require('./notes.js');
+
+
+const titleOptions = {
+    alias: 't',
+    description: 'Title of the note.',
+    demand: true
+}
+
+const bodyOptions = {
+    alias: 'b',
+    description: 'Body of the note.',
+    demand: true
+}
+
+var argv = yargs
+    .command('add', 'Add a note.', {
+        title: titleOptions,
+        body: bodyOptions
+    })
     .command('list', 'List a note.')
-    .command('read', 'Read a note.')
-    .command('remove', 'Remove a note.')
-    .usage('Usage: $0 <command> where command=add,list,read,remove')
+    .command('read', 'Read a note.', {
+        title: titleOptions  
+    })
+    .command('remove', 'Remove a note.', {
+        title: titleOptions  
+    })
+    .usage('Usage: node $0 <command> where command=add,list,read,remove')
     .help('help').alias('help', 'h')
     .version('version','1.0.1').alias('version','V')
-    .option({
-         title: {
-            alias: 't',
-            description: "Title of the note.",
-            requiresArg: true,
-            required: false
-        },
-        body: {
-            alias: 'l',
-            description: "Body of the note.",
-            requiresArg: true,
-            required: false
-        }
-    });
+    
     //     read: {
     //         alias: 'r',
     //         description: "--title=\"\" --body=\"\"",
@@ -34,11 +44,7 @@ const yargs = require('yargs')
     //         requiresArg: true,
     //         required: false
     //     }});
-const notes = require('./notes.js');
-
-
-
-var argv = yargs.argv;
+    .argv;
 
 var command = process.argv[2];
 // Here we're using process.argv to return the first item passed from the command line
